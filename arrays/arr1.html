@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays - Superhéroes</title>
+
+<ul id="superheroes-list"></ul>
+</head>
+<body>
+    <h1>Superhéroes de Marvel y DC</h1>
+
+    <input type="text" id="input" placeholder="Nombre del superhéroe">
+    <button id="button">Agregar Superhéroe</button>
+    <button id="show-list-button">fiumba lista</button>
+
+    <script>
+        let superheroes = [
+            "Spider-Man",
+            "Iron Man",
+            "Capitán América",
+            "Thor",
+            "Hulk",
+            "Viuda Negra",
+            "Ojo de Halcón",
+            "Doctor Strange",
+            "Black Panther",
+            "Capitana Marvel",
+            "Ant-Man",
+            "Wolverine",
+            "Deadpool",
+            "Daredevil",
+            "Bruja Escarlata",
+            "Superman",
+            "Batman",
+            "Mujer Maravilla",
+            "Flash",
+            "Linterna Verde",
+            "Aquaman",
+            "Cyborg",
+            "Robin",
+            "Batgirl",
+            "Supergirl",
+            "Shazam",
+            "Detective Marciano",
+            "Green Arrow",
+            "Nightwing",
+            "Zatanna"
+        ];
+
+        console.log("Existen " + superheroes.length + " superhéroes en el array.");
+
+      
+        const button = document.getElementById("button");
+
+       
+        button.addEventListener("click", function() {
+        const input = document.getElementById("input").value;
+            console.log("dato ingresado: ", input);
+          // agregar el valor al inicio del array
+            superheroes.unshift(input);
+          //agregar el valor al final del array
+            superheroes.push(input);
+        });
+
+        const showListButton = document.getElementById("show-list-button");
+        const superheroesList = document.getElementById("superheroes-list");
+
+        showListButton.addEventListener("click", function() {
+            superheroesList.innerHTML = "";
+            superheroes.forEach(function(superheroe) {
+                const li = document.createElement("li");
+                li.textContent = superheroe;
+                superheroesList.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
