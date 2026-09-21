@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arrays - Superhéroes</title>
-
-<ul id="superheroes-list"></ul>
 </head>
 <body>
     <h1>Superhéroes de Marvel y DC</h1>
-
     <input type="text" id="input" placeholder="Nombre del superhéroe">
     <button id="button">Agregar Superhéroe</button>
     <button id="show-list-button">fiumba lista</button>
+  <button id="eliminarbutton" onclick="eliminarUltimoElemento()">Eliminar ultimo</button>
+  <button id="eliminar-button">Eliminar primero</button>
+  <button id="buscar-button">Buscar elemento</button>
+  <button id="eliminarElemento"> Eliminar eliminarElemento</button>
+  <p id="mensaje"></p>
+
+    <ul id="superheroes-list"></ul>
 
     <script>
         let superheroes = [
@@ -52,7 +56,7 @@
 
       
         const button = document.getElementById("button");
-
+        const mensaje = document.getElementById("mensaje")
        
         button.addEventListener("click", function() {
         const input = document.getElementById("input").value;
@@ -64,17 +68,65 @@
               mostrarLista();
         });
 
-        const showListButton = document.getElementById("show-list-button");
         const superheroesList = document.getElementById("superheroes-list");
 
-        showListButton.addEventListener("click", function() {
+        function mostrarLista() {
             superheroesList.innerHTML = "";
             superheroes.forEach(function(superheroe) {
                 const li = document.createElement("li");
                 li.textContent = superheroe;
                 superheroesList.appendChild(li);
             });
-        });
-    </script>
+        }
+
+        document.getElementById("show-list-button").addEventListener("click", mostrarLista);
+
+        function suma(a, b) {
+            return a + b;
+        }
+
+        function saludo() {
+            console.log("hola buenas tardes");
+        }
+
+        function eliminarUltimoElemento() {
+            var ultimoElemento = superheroes.pop();
+            mensaje.textContent= "Eliminado : " + ultimoElemento;
+            //console.log("Eliminado: " + ultimoElemento);
+            mostrarLista();
+        }
+
+function eliminarPrimerElemento(){
+    var PrimerElemento = superheroes.shift();
+    mensaje.textContent = "Eliminado : " + PrimerElemento;
+    mostrarLista();
+}
+const eliminarPrimeroButton = document.getElementById("eliminar-button");
+eliminarPrimeroButton.addEventListener("click", eliminarPrimerElemento);
+
+function BuscarElemento() {
+    var texto = document.getElementById("input").value.toLowerCase().trim();
+    var superheroesLower = superheroes.map(function(marca) {
+        return marca.toLowerCase();
+    });
+    var pos = superheroesLower.indexOf(texto);
+
+    if (pos !== -1) {
+        marcas.splice(pos, 1);
+        mensaje.textContent = "Encontrado: " + superheroes[pos] + " en la posición " + pos;
+    } else {
+        mensaje.textContent = "No se encontró: " + texto;
+    }
+}
+
+const buscarButton = document.getElementById("buscar-button");
+buscarButton.addEventListener("click", BuscarElemento);
+   function eliminarElementoEspecifico(){}
+
+   const eliminarElemento = document. getElementById ("eliminarElemento");
+   
+   
+   
+   </script>
 </body>
 </html>
